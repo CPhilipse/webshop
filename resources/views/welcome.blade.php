@@ -79,6 +79,7 @@
                 </div>
             @endif
 
+{{--            Home page --}}
             <div class="content">
                 <div class="title m-b-md">
                     Laravel

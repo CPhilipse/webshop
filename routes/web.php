@@ -11,10 +11,46 @@
 |
 */
 
+/* --------------------- Common/User Routes START -------------------------------- */
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes([ 'verify' => true ]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+/* --------------------- Common/User Routes END -------------------------------- */
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/* ----------------------- Admin Routes START -------------------------------- */
+
+// all the routes will have admin like /admin/other/route so we can use prefix()
+// method and we are also using named routes
+// so we need all our route to have “admin.” prefix when naming them.
+// Last thing will be the namespace Admin because laravel uses psr-4 autoloading
+// and all the classes need to have a namespace
+// https://github.com/SagarMaheshwary/laravel-multiauth
+
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
+
+    /**
+     * Admin Auth Route(s)
+     */
+    Route::namespace('Auth')->group(function(){
+
+        //Login Routes
+        Route::get('/login','LoginController@showLoginForm')->name('login');
+        Route::post('/login','LoginController@login');
+        Route::post('/logout','LoginController@logout')->name('logout');
+
+        //Register Routes
+        // Route::get('/register','RegisterController@showRegistrationForm')->name('register');
+        // Route::post('/register','RegisterController@register');
+
+    });
+
+    Route::get('/dashboard','HomeController@index')->name('home')->middleware('auth:admin');
+
+    //Put all of your admin routes here...
+
+});
+
+/* ----------------------- Admin Routes END -------------------------------- */
