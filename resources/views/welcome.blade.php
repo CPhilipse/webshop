@@ -65,35 +65,33 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            @auth()
+                @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+            @endauth
 {{--            Home page --}}
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    MyWebshop
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+{{--                    Based on productID go to that product that is stored in the database. You retrieve this with the request. --}}
+                    <a href="{{ route('product') }}">Product 1</a>
+{{--                    <a href="{{ route('product' . $productID) }}">Product 2</a>--}}
+{{--                    <a href="{{ route('product' . $request->productID) }}">Product 3</a>--}}
+{{--                    For admin product routes, put it in the admin folder for views. --}}
                 </div>
             </div>
         </div>

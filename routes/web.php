@@ -12,11 +12,16 @@
 */
 
 /* --------------------- Common/User Routes START -------------------------------- */
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Auth::routes([ 'verify' => true ]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+//Product Routes
+Route::get('/','ProductController@showAllProducts')->name('products');
+//Route::get('/product' . $request->productID,'ProductController@showProduct')->name('product');
+Route::get('product/{id}','ProductController@showProduct')->name('product');
 /* --------------------- Common/User Routes END -------------------------------- */
 
 
@@ -41,9 +46,10 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
         Route::post('/login','LoginController@login');
         Route::post('/logout','LoginController@logout')->name('logout');
 
-        //Register Routes
-        // Route::get('/register','RegisterController@showRegistrationForm')->name('register');
-        // Route::post('/register','RegisterController@register');
+        //Product Routes
+        Route::get('/products','ProductsController@showAllProducts')->name('products');
+        Route::get('/product','ProductController@showProduct')->name('product');
+//         Route::post('/register','RegisterController@register');
 
     });
 
