@@ -145,6 +145,7 @@
         </ul>
     <img style="max-height: 22%; max-width: 38%; padding-left: 100px;" src="https://www.miinto.nl/imiintofashion/wp-content/uploads/sites/6/2015/12/broeken.png" alt="Spijkerbroeken">
 </div>
+{{-- Test shoppingcart branch --}}
 <div class="flex-center position-ref">
     @auth()
         @if (Route::has('login'))
