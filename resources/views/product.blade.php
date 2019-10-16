@@ -64,6 +64,7 @@
     </style>
 </head>
 <body>
+
 <div class="flex-center position-ref full-height">
     @auth()
         @if (Route::has('login'))
@@ -88,14 +89,9 @@
 
         <div class="links">
             {{-- How to grab the product id used in route from the database? To show that specific product in here? --}}
-            <a href="/">Product page {{$product}}</a>
-{{--            @foreach($product as $object)--}}
-{{--                <a href="{{ route($product->productID) }}">--}}
-{{--                    <h1>{{$product->name}}</h1>--}}
-{{--                    <p>{{$product->description}}</p>--}}
-{{--                    <p>{{$product->price}}</p>--}}
-{{--                </a>--}}
-{{--            @endforeach--}}
+                    <h1>{{$product->name}}</h1>
+                    <p>{{$product->description}}</p>
+                    <p>{{$product->price}}</p>
         </div>
     </div>
 </div>

@@ -25,12 +25,8 @@ class ProductController extends Controller
     }
 
     public function showProduct ($id) {
-//        $product = Product::findOrFail($id);
-        $product = Product::with('products')->get($id);
+        $product =  Product::find($id);
 
-//        dd($product);
-//        $product = Product::with('products')->where('id', $id)->get();
-//        $product = DB::table('products')->where('productID', $id)->get();
         return view('product')->with('product', $product);
     }
 

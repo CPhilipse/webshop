@@ -8,9 +8,8 @@ class Product extends Model
 {
     public $fillable = ['name', 'description', 'price', 'availability'];
 
-    public function index () {
-//        $product = Product::get($id);
-
+    public function index ($id) {
+//        return Product::get($id);
     }
 
     public function products()
@@ -18,9 +17,9 @@ class Product extends Model
         return $this->hasMany('App\Product','id');
     }
 
-    public function product()
+    public function product($id)
     {
-        return $this->belongsTo('App\Product');
+        return Product::get($id);
     }
 }
 

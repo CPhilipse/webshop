@@ -116,7 +116,7 @@
         <a href="/">MyWebshop</a>
     </span>
     <span style="float: right;">
-        <a href="/">Account</a>
+        <a href="{{ url('account') }}">Account</a>
         <a href="/">Winkelwagentje</a>
     </span>
 </div>
@@ -166,7 +166,7 @@
     <div class="content">
             @foreach($products as $product)
                 <div class="products">
-                    <a href="{{ route('product', ['id' => $product->productID]) }}">
+                    <a href="{{ route('product', ['id' => $product->id]) }}">
                         <h1>{{$product->name}}</h1>
                         <p>{{$product->description}}</p>
                         <p>{{$product->price}}</p>
